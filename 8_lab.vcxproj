@@ -138,6 +138,7 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="CountryHouse.h" />
     <ClInclude Include="Property.h" />
+    <ClInclude Include="TAX_RATES.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

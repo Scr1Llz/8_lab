@@ -4,5 +4,6 @@ class Car : public Property {
 	double horsepower;
 public:
 	Car(size_t worth, double horsepower) : Property(worth), horsepower(horsepower){}
+	size_t calculatePropertyTax() const override {}
 };
 
