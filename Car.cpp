@@ -1,5 +1,5 @@
 #include "Car.h"
-size_t Car::calculatePropertyTax() const {
+double Car::calculateTax() const {
 	if (horsepower > TAX_RATES::LOW_HORSEPOWER) {
 		if (horsepower > TAX_RATES::HIGH_HORSEPOWER) {
 			return getWorth() * TAX_RATES::CAR_LUXURY_TAX;
