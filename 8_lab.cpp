@@ -115,10 +115,39 @@ int main() {
 							cin >> worth;
 							cout << "Введите площадь: ";
 							cin >> square;
-							property.push_back(new Apartment(square, worth));
+							property.push_back(new Apartment(worth, square));
 							owners[ind - 1].setProperties(property);
 							system("cls");
-							cout << "Квартира добавлена.";
+							cout << "Квартира добавлена." << endl;
+							system("pause");
+							break;
+						}
+						case add_car: {
+							size_t worth;
+							double horsepower;
+							cout << "Введите стоимость машины: ";
+							cin >> worth;
+							cout << "Введите количество лошадиных сил: ";
+							cin >> horsepower;
+							property.push_back(new Car(worth, horsepower));
+							owners[ind - 1].setProperties(property);
+							system("cls");
+							cout << "Машина добавлена." << endl;
+							system("pause");
+							break;
+						}
+						case add_house: {
+							size_t worth;
+							size_t distanceFromCity;
+							cout << "Введите стоимость дома: ";
+							cin >> worth;
+							cout << "Введите расстяние от города до дома: ";
+							cin >> distanceFromCity;
+							property.push_back(new CountryHouse(worth, distanceFromCity));
+							owners[ind - 1].setProperties(property);
+							system("cls");
+							cout << "Загородный дом добавлен." << endl;
+							system("pause");
 							break;
 						}
 						case leave_props: {
@@ -127,6 +156,31 @@ int main() {
 						}
 						}
 					}
+					break;
+				}
+				case del_prop: {
+					int index;
+					system("cls");
+					for (int i = 0; i < owners.size();i++) {
+						if (ind == 1 + i) cout << "Выбранный собственник с номером " << ind << ":" << endl << owners[i] << endl << endl;
+					}
+					if (owners[ind - 1].getProperties().size() == 0) {
+						system("cls");
+						cout << "Собственник не имеет имущества." << endl;
+						system("pause");
+						break;
+					}
+					cout << "Введите номер имущества, которое нужно отобрать: ";
+					while (!(cin >> index) || index > owners[ind - 1].getProperties().size() || index < 0) {
+						system("cls");
+						print_owners();
+						cout << "Такого имущества нет. Введите заново: ";
+					}
+
+					owners[ind - 1].removeProperty(index - 1);
+					system("cls");
+					cout << "Собственность удалена." << endl;
+					system("pause");
 					break;
 				}
 				case leave_prop: {

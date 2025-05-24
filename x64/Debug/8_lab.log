@@ -1,4 +1,2 @@
 ﻿  8_lab.cpp
-Z:\Labs\OOP\8_lab\8_lab\8_lab.cpp(118,49): warning C4244: аргумент: преобразование "size_t" в "double", возможна потеря данных
-Z:\Labs\OOP\8_lab\8_lab\8_lab.cpp(118,41): warning C4244: аргумент: преобразование "double" в "size_t", возможна потеря данных
   8_lab.vcxproj -> Z:\Labs\OOP\8_lab\x64\Debug\8_lab.exe
