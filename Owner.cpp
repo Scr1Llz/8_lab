@@ -11,8 +11,8 @@ void Owner::removeProperty(const size_t& index) {
 	properties.erase(properties.begin() + index);
 }
 
-size_t Owner::calculateTotalTax() const {
-	size_t total_tax = 0;
+double Owner::calculateTotalTax() const {
+	double total_tax = 0.0;
 	for (Property* prop : properties) {
 		total_tax += prop->calculateTax();
 	}
