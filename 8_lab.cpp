@@ -1,7 +1,10 @@
-﻿#include "Owner.h"
-#include "Property.h"
+﻿#include "Property.h"
+#include "Owner.h"
+#include "fstream"
 
 void print_owners();
+void fromJson(nlohmann::json json);
+void From_json();
 
 vector<Owner> owners;
 
@@ -41,17 +44,19 @@ int main() {
 		cout << "1. Добавить нового собственника." << endl;
 		cout << "2. Ликвидировать собственника." << endl;
 		cout << "3. Выбрать собственника для управления его имуществом." << endl;
+		cout << "4. Получить данные из JSON-файла." << endl;
+		cout << "5. Вывести данные в JSON-файл." << endl;
 		cout << "0. Выход." << endl;
 		cout << "Ваш выбор: ";
 		cin >> vote;
-		while (cin.fail() || vote < 0 || vote > 3) {
+		while (cin.fail() || vote < 0 || vote > 5) {
 			cin.clear();
 			cin.ignore((numeric_limits<streamsize>::max)(), '\n');
 			cin >> vote;
 		}
 		cin.clear();
 		cin.ignore((numeric_limits<streamsize>::max)(), '\n');
-		enum{ leave, add, remove, control};
+		enum{ leave, add, remove, control, from_json, to_json};
 		switch(vote) {
 		case add: {
 			string name, inn;
@@ -294,6 +299,10 @@ int main() {
 			}
 			break;
 		}
+		case from_json: {
+			From_json();
+			break;
+		}
 		case leave:
 			flag = false;
 			break;
@@ -305,5 +314,55 @@ int main() {
 void print_owners() {
 	for (int i = 0; i < owners.size();i++) {
 		cout << i + 1 << "." << owners[i] << endl << endl;
+	}
+}
+
+void fromJson(nlohmann::json json) {
+	vector<Owner> result;
+	try
+	{
+		for (auto ownJson : json["Owners"])
+		{
+			Owner own("", "123456789123");
+			own.fromJson(ownJson);
+			result.push_back(own);
+		}
+	}
+	catch (nlohmann::json::type_error err)
+	{
+		throw invalid_argument("error in json format");
+	}
+	owners = result;
+}
+
+void From_json() {
+	string filename;
+	bool lever = false;
+	while (!lever)
+	{
+		system("cls");
+		cout << "Введите имя Json-файла: ";
+		cin >> filename;
+		ifstream file(filename);
+		if (!file.is_open())
+		{
+			cout << "Не удалось открыть файл, возможно он не существует" << endl;
+			system("pause");
+		}
+		lever = file.is_open();
+		if (lever)
+		{
+			nlohmann::json json = nlohmann::json::parse(file);
+			try
+			{
+				fromJson(json);
+			}
+			catch (exception ex)
+			{
+				system("cls");
+				cout << ex.what();
+				lever = false;
+			}
+		}
 	}
 }

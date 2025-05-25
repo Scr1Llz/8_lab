@@ -3,8 +3,10 @@
 #include "Apartment.h"
 #include "Car.h"
 #include "CountryHouse.h"
+#include "PropertySimpleFactory.h"
+#include "Ijsonio.h"
 
-class Owner {
+class Owner : public Ijsonio {
 	string fullname;
 	string inn;
 	vector<Property*> properties;
@@ -26,6 +28,9 @@ public:
 
 	void addProperty(Property* property);
 	void removeProperty(const size_t& index);
+
+	void fromJson(nlohmann::json json) override;
+	nlohmann::json toJson() override;
 
 	double calculateTotalTax() const;
 

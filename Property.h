@@ -4,11 +4,13 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include "json.hpp"
 #include <windows.h>
+#include "Ijsonio.h"
 
 using namespace std;
 
-class Property {
+class Property : public Ijsonio {
 	size_t worth;
 public:
 	Property(size_t worth) : worth(worth) {}
@@ -20,6 +22,10 @@ public:
 
 	size_t getWorth() const {
 		return worth;
+	}
+
+	void setWorth(const double& worthi) {
+		worth = worthi;
 	}
 
 	virtual ~Property() {}

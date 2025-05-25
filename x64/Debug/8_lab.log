@@ -1,2 +1,5 @@
-﻿  8_lab.cpp
+﻿  Car.cpp
+Z:\Labs\OOP\8_lab\8_lab\Property.h(28,11): warning C4244: =: преобразование "const double" в "size_t", возможна потеря данных
+  (компиляция исходного файла "Car.cpp")
+  
   8_lab.vcxproj -> Z:\Labs\OOP\8_lab\x64\Debug\8_lab.exe

@@ -7,6 +7,9 @@ public:
 
 	double calculateTax() const override;
 
+	void fromJson(nlohmann::json json) override;
+	nlohmann::json toJson() override;
+
 	double getSquare() const {
 		return square;
 	}

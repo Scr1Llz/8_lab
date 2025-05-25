@@ -19,6 +19,44 @@ double Owner::calculateTotalTax() const {
 	return total_tax;
 }
 
+void Owner::fromJson(nlohmann::json json)
+{
+	vector<Property*> properties;
+	try
+	{
+		fullname = json["fullname"];
+		inn = json["inn"];
+		for (auto propJson : json["properties"])
+		{
+			string key = propJson.begin().key();
+			Property* property = PropertySimpleFactory::getProperty(key);
+			property->fromJson(propJson);
+			properties.push_back(property);
+		}
+	}
+	catch (nlohmann::json::type_error err)
+	{
+		throw invalid_argument("error in json format");
+	}
+	this->properties = properties;
+}
+
+nlohmann::json Owner::toJson()
+{
+	nlohmann::json json;
+	json =
+	{
+		{ "fullname", fullname },
+		{ "inn", inn },
+		{ "sumtax", calculateTotalTax() },
+		{ "properties", nlohmann::json::array() }
+	};
+	for (auto prop : properties)
+	{
+		json["properties"].push_back(prop->toJson());
+	}
+	return json;
+}
 
 ostream& operator<<(ostream& os, const Owner& owner) {
 	int k = 1;

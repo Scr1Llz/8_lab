@@ -1,0 +1,58 @@
+{
+    "Owners": [
+        {
+            "fullname": "Ivanov I.I.",
+            "inn": "123123123123",
+            "properties": [
+                {
+                    "Apartment": {
+                        "square": 55.5,
+                        "worth": 55555
+                    }
+                },
+                {
+                    "Apartment": {
+                        "square": 66.6,
+                        "worth": 666666
+                    }
+                },
+                {
+                    "Car": {
+                        "horsePower": 1.7,
+                        "worth": 77777
+                    }
+                },
+                {
+                    "CountryHouse": {
+                        "distanceFromCity": 30,
+                        "worth": 666666
+                    }
+                }
+            ]
+        },
+        {
+            "fullname": "Sidorov A.V.",
+            "inn": "456456456456",
+            "properties": [
+                {
+                    "Car": {
+                        "horsePower": 2.0,
+                        "worth": 120000
+                    }
+                },
+                {
+                    "Car": {
+                        "horsePower": 1.6,
+                        "worth": 80000
+                    }
+                },
+                {
+                    "CountryHouse": {
+                        "distanceFromCity": 45,
+                        "worth": 350000
+                    }
+                }
+            ]
+        }
+    ]
+}
