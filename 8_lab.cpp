@@ -406,6 +406,20 @@ string check_filename() {
 		cin.clear();
 		cin >> filename;
 	}
+	while (flag) {
+		for (int i = 0; i < filename.size(); i++) {
+			if (isdigit(filename[i]) || isalpha(filename[i])) flag = false;
+		}
+		if (flag) {
+			cout << "Вы ввели неверное название файла." << endl;
+			system("pause");
+			system("cls");
+			cout << "Введите имя файла заново: ";
+			cin.clear();
+			cin >> filename;
+		}
+	}
+	flag = true;
 	if (filename.size() > 5) {
 		for (int i = filename.size() - 5; i < filename.size(); i++) {
 			if (filename[i] != word[i - (filename.size() - 5)]) {

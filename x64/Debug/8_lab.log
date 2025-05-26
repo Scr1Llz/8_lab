@@ -2,5 +2,10 @@
 Z:\Labs\OOP\8_lab\8_lab\Property.h(28,11): warning C4244: =: преобразование "const double" в "size_t", возможна потеря данных
   (компиляция исходного файла "8_lab.cpp")
   
-Z:\Labs\OOP\8_lab\8_lab\8_lab.cpp(410,14): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+Z:\Labs\OOP\8_lab\8_lab\8_lab.cpp(424,14): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Owner.cpp
+Z:\Labs\OOP\8_lab\8_lab\Property.h(28,11): warning C4244: =: преобразование "const double" в "size_t", возможна потеря данных
+  (компиляция исходного файла "Owner.cpp")
+  
+  Создание кода...
   8_lab.vcxproj -> Z:\Labs\OOP\8_lab\x64\Debug\8_lab.exe
