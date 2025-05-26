@@ -1,7 +1,7 @@
 {
     "Owners": [
         {
-            "fullname": "Ivanov I.I.",
+            "fullname": "Ivanov Ivan Ivanich",
             "inn": "123123123123",
             "properties": [
                 {
@@ -18,7 +18,7 @@
                 },
                 {
                     "Car": {
-                        "horsePower": 1.7,
+                        "horsepower": 1.7,
                         "worth": 77777
                     }
                 },
@@ -31,18 +31,18 @@
             ]
         },
         {
-            "fullname": "Sidorov A.V.",
+            "fullname": "Sidorov Aleksey Valerevich",
             "inn": "456456456456",
             "properties": [
                 {
                     "Car": {
-                        "horsePower": 2.0,
+                        "horsepower": 2.0,
                         "worth": 120000
                     }
                 },
                 {
                     "Car": {
-                        "horsePower": 1.6,
+                        "horsepower": 1.6,
                         "worth": 80000
                     }
                 },

@@ -5,6 +5,9 @@
 void print_owners();
 void fromJson(nlohmann::json json);
 void From_json();
+nlohmann::json toJson();
+void To_json();
+string check_filename();
 
 vector<Owner> owners;
 
@@ -303,6 +306,10 @@ int main() {
 			From_json();
 			break;
 		}
+		case to_json: {
+			To_json();
+			break;
+		}
 		case leave:
 			flag = false;
 			break;
@@ -341,8 +348,8 @@ void From_json() {
 	while (!lever)
 	{
 		system("cls");
-		cout << "Введите имя Json-файла: ";
-		cin >> filename;
+		cout << "Введите имя Json-файла для открытия: ";
+		filename = check_filename();
 		ifstream file(filename);
 		if (!file.is_open())
 		{
@@ -365,4 +372,49 @@ void From_json() {
 			}
 		}
 	}
+}
+
+nlohmann::json toJson() {
+	nlohmann::json json;
+	json["Owners"] = nlohmann::json::array();
+	for (Owner i : owners) json["Owners"].push_back(i.toJson());
+	return json;
+}
+
+void To_json() {
+	string filename;
+	system("cls");
+	cout << "Введите имя Json-файла, в который нужно сохранить данные о налогах: ";
+	filename = check_filename();
+	ofstream file(filename);
+	file << toJson().dump(4);
+	file.close();
+	cout << "Вывод успешен." << endl;
+	system("pause");
+}
+
+string check_filename() {
+	string filename;
+	string word = ".json";
+	bool flag = true;
+	cin >> filename;
+	while (filename == word) {
+		cout << "Вы ввели только расширение .json" << endl;
+		system("pause");
+		system("cls");
+		cout << "Введите имя файла заново: ";
+		cin.clear();
+		cin >> filename;
+	}
+	if (filename.size() > 5) {
+		for (int i = filename.size() - 5; i < filename.size(); i++) {
+			if (filename[i] != word[i - (filename.size() - 5)]) {
+				flag = false;
+				break;
+			}
+		}
+	}
+	else flag = false;
+	if (flag) return filename;
+	return filename + word;
 }

@@ -69,17 +69,17 @@ ostream& operator<<(ostream& os, const Owner& owner) {
 	else {
 		for (Property* prop : owner.properties) {
 			if (const Apartment* apt = dynamic_cast<const Apartment*>(prop)) {
-				os << k << ". Квартира: " << apt->getWorth() << " Площадь: " << apt->getSquare() << " Налог: " << apt->calculateTax() << endl;
+				os << k << ". Квартира: " << fixed << setprecision(2) << apt->getWorth() << " Площадь: " << fixed << setprecision(2) << apt->getSquare() << " Налог: " << fixed << setprecision(2) << apt->calculateTax() << endl;
 			}
 			else if (const Car* car = dynamic_cast<const Car*>(prop)) {
-				os << k << ". Машина: " << car->getWorth() << " Лошадиных сил: " << car->getHorsePower() << " Налог: " << car->calculateTax() << endl;
+				os << k << ". Машина: " << fixed << setprecision(2) << car->getWorth() << " Лошадиных сил: " << fixed << setprecision(2) << car->getHorsePower() << " Налог: " << fixed << setprecision(2) << car->calculateTax() << endl;
 			}
 			else if (const CountryHouse* house = dynamic_cast<const CountryHouse*>(prop)) {
-				os << k << ". Загородный дом: " << house->getWorth() << " Расстояние от города: " << house->getDistance() << " Налог: " << house->calculateTax() << endl;
+				os << k << ". Загородный дом: " << fixed << setprecision(2) << house->getWorth() << " Расстояние от города: " << fixed << setprecision(2) << house->getDistance() << " Налог: " << fixed << setprecision(2) << house->calculateTax() << endl;
 			}
 			k++;
 		}
-		os << "Общий налог: " << owner.calculateTotalTax();
+		os << "Общий налог: " << setprecision(2) << owner.calculateTotalTax();
 	} 
 	return os;
 }
